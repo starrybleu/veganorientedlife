@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface OAuth2RefreshTokenRepository extends MongoRepository<OAuth2AuthenticationRefreshToken, String> {
 
     public OAuth2AuthenticationRefreshToken findByTokenId(String tokenId);
+
 }

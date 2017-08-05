@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import lombok.ToString;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +25,7 @@ import java.util.*;
 @ToString
 public class User extends BaseEntity implements UserDetails {
 
-    @Setter
+    @Setter @Indexed
     private String emailAddress;
     @Setter
     private String firstName;

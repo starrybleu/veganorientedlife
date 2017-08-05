@@ -2,6 +2,7 @@ package kr.veganoriented.oauth2;
 
 
 import kr.veganoriented.domain.BaseEntity;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
@@ -9,6 +10,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
  * Created by terrylee on 17. 8. 1.
  */
 
+@Document(collection = "OAuth2AuthenticationRefreshToken")
 public class OAuth2AuthenticationRefreshToken extends BaseEntity {
 
     private String tokenId;

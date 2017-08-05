@@ -1,7 +1,9 @@
 package kr.veganoriented.service;
 
+import kr.veganoriented.domain.ApiUser;
 import kr.veganoriented.domain.User;
 import kr.veganoriented.repository.UserRepository;
+import kr.veganoriented.rest.exception.AuthenticationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.util.Assert.notNull;
 
@@ -24,9 +26,7 @@ import static org.springframework.util.Assert.notNull;
 public class UserService implements UserDetailsService{
 
     private Logger LOG = LoggerFactory.getLogger(UserService.class);
-
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     private UserRepository userRepository;
 
     public User findByEmailAddress(String emailAddress) {
@@ -40,6 +40,16 @@ public class UserService implements UserDetailsService{
 
     private String encryptPassword(String password) {
         return passwordEncoder.encode(password);
+    }
+
+    public ApiUser authenticate(String username, String password) {
+        Assert.notNull(username);
+        Assert.notNull(password);
+        User user = locateUser(username);
+        if(!passwordEncoder.encode(password).equals(user.getHashedPassword())) {
+            throw new AuthenticationException();
+        }
+        return new ApiUser(user);
     }
 
     public List<User> findAll() {

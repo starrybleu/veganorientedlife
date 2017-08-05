@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
- * Created by terrylee on 17. 8. 1.
+ * Created by terrylee on 17. 8. 4.
  */
 
 @Configuration

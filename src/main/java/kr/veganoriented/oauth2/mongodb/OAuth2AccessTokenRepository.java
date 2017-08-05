@@ -22,4 +22,5 @@ public interface OAuth2AccessTokenRepository extends MongoRepository<OAuth2Authe
     public List<OAuth2AuthenticationAccessToken> findByClientIdAndUserName(String clientId, String userName);
 
     public List<OAuth2AuthenticationAccessToken> findByClientId(String clientId);
+
 }

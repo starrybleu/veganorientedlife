@@ -20,8 +20,10 @@ import java.util.List;
 
 public class OAuth2RepositoryTokenStore implements TokenStore {
 
+    @Autowired
     private final OAuth2AccessTokenRepository oAuth2AccessTokenRepository;
 
+    @Autowired
     private final OAuth2RefreshTokenRepository oAuth2RefreshTokenRepository;
 
     private AuthenticationKeyGenerator authenticationKeyGenerator = new DefaultAuthenticationKeyGenerator();
