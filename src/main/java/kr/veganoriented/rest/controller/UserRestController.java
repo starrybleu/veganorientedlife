@@ -27,6 +27,7 @@ public class UserRestController {
     public static final String OWNER = "authentication.name == #userName";
     public static final String ADMIN = "hasRole('ADMIN')";
 
+    @Autowired
     private UserService userService;
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -73,8 +74,8 @@ public class UserRestController {
         return resultMap;
     }
 
-    @Autowired
-    protected void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    protected void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 }

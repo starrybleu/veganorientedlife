@@ -14,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by terrylee on 17. 7. 31.
@@ -77,12 +78,23 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-        for( Role role : this.getRoles() ){
-            GrantedAuthority authority = new SimpleGrantedAuthority(role.name());
-            authorities.add(authority);
+
+        List<Role> roles = this.getRoles();
+
+        if(roles == null || roles.size() == 0) {
+            return Collections.emptyList();
         }
-        return authorities;
+
+        return Arrays.stream(new List[]{roles}).map(
+                role -> (GrantedAuthority) () -> role.toString()
+        ).collect(Collectors.toList());
+
+//        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+//        for( Role role : this.getRoles() ){
+//            GrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+//            authorities.add(authority);
+//        }
+//        return authorities;
     }
 
     @Override
