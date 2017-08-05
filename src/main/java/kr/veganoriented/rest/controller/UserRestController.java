@@ -48,14 +48,10 @@ public class UserRestController {
     }
 
     @PreAuthorize(ADMIN + " or " + OWNER)
-    @RequestMapping(path = "/{userName}", method = RequestMethod.GET)
-    public User getUser(@PathVariable String emailAddress) {
+    @RequestMapping(path = "/{userid:.+}", method = RequestMethod.GET)
+    public User getUser(@PathVariable("userid") String emailAddress) {
 
         User user = userService.findByEmailAddress(emailAddress);
-
-//        if(user == null) {
-//            return user;
-//        }
 
         return user;
     }
@@ -71,7 +67,6 @@ public class UserRestController {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         LOG.info("user =>>> " + user.toString());
         User savedUser = userService.save(user);
-//        createTokenForNewUser(savedUser.getId(), user.getHashedPassword(), "foo");
         resultMap.put("status", "success for save");
         resultMap.put("message", savedUser.getEmailAddress() + ", Welcome to Vegan Oriented");
 

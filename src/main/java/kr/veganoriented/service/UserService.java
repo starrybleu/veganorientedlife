@@ -6,6 +6,7 @@ import kr.veganoriented.enums.Role;
 import kr.veganoriented.repository.UserRepository;
 import kr.veganoriented.rest.exception.AuthenticationException;
 import kr.veganoriented.rest.exception.DuplicateUserException;
+import kr.veganoriented.rest.exception.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,12 @@ public class UserService implements UserDetailsService{
     private ClientDetailsService clientDetailsService;
 
     public User findByEmailAddress(String emailAddress) {
-        return userRepository.findByEmailAddress(emailAddress);
+        Assert.notNull(emailAddress);
+        User user = userRepository.findByEmailAddress(emailAddress);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        return user;
     }
 
     public User save(User user) {
