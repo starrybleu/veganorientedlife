@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @version 1.0
- * @author: Iain Porter
- * @since 24/04/2013
+ * Created by terrylee on 17. 8. 1.
  */
+
 @XmlRootElement
 public class ErrorResponse {
 

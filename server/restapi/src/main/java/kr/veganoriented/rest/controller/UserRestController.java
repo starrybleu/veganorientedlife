@@ -74,8 +74,4 @@ public class UserRestController {
         return resultMap;
     }
 
-//    @Autowired
-//    protected void setUserService(UserService userService) {
-//        this.userService = userService;
-//    }
 }
