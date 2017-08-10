@@ -1,6 +1,7 @@
 package kr.veganoriented.exception;
 
-import kr.veganoriented.api.ErrorResponse;
+import kr.veganoriented.error.ErrorResponse;
+
 import org.springframework.security.access.AccessDeniedException;
 
 import javax.ws.rs.core.MediaType;

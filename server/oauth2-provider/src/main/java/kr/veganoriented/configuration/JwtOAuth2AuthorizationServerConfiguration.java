@@ -1,6 +1,7 @@
 package kr.veganoriented.configuration;
 
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.authserver.AuthorizationServerProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.authserver.OAuth2AuthorizationServerConfiguration;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,8 @@ public class JwtOAuth2AuthorizationServerConfiguration extends OAuth2Authorizati
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         super.configure(endpoints);
-        endpoints.accessTokenConverter(new JwtAccessTokenConverter());
+//        endpoints.accessTokenConverter(new JwtAccessTokenConverter());
+        // 위에 주석 처리한 부분 때문에(주석달기 전에) JwtAccessTokenConverter의 인스턴스가 새롭게 생성되면서 setSigningKey 메소드로 설정한 키가 변하는 것이었음
     }
 
     @Override

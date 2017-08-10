@@ -1,6 +1,6 @@
 package kr.veganoriented.exception;
 
-import kr.veganoriented.api.ErrorResponse;
+import kr.veganoriented.error.ErrorResponse;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;

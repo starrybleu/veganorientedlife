@@ -32,7 +32,7 @@ public class RestConfiguration extends ResourceServerConfigurerAdapter {
     @Bean
     @Primary
     public DefaultTokenServices tokenServices() {
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        final DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
 
         return defaultTokenServices;

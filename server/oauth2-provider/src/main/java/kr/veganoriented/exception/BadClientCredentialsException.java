@@ -1,6 +1,6 @@
 package kr.veganoriented.exception;
 
-import kr.veganoriented.api.ErrorResponse;
+import kr.veganoriented.error.ErrorResponse;
 
 /**
  * Created by terrylee on 17. 8. 4.

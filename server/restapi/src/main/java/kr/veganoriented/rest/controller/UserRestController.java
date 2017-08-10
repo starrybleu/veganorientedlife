@@ -40,7 +40,7 @@ public class UserRestController {
                 "-F \"scope=read\" " +
                 "-F \"client_id=foo\" " +
                 "-F \"client_secret=bar\" " +
-                "-F \"redirect_uri=http://localhost:8080/api/oauth/users/authorization-code\" " +
+                "-F \"redirect_uri=http://localhost:8080/error/oauth/users/authorization-code\" " +
                 "\"http://foo:bar@localhost:8080/oauth/token\"";
 
         String curl = String.format(strForCurl, code);

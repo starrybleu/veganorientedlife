@@ -20,7 +20,7 @@ public class RestVeganOrientedApplication extends ResourceServerConfigurerAdapte
         httpSecurity.authorizeRequests()
                 .anyRequest()
                 .permitAll()
-                .antMatchers("/api/oauth/**").access("#oauth2.hasScope('read')")
+                .antMatchers("/error/oauth/**").access("#oauth2.hasScope('read')")
                 .anyRequest().authenticated();
     }
 
