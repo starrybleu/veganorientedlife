@@ -1,6 +1,6 @@
-package kr.veganoriented.repository;
+package kr.veganoriented.rest.repository;
 
-import kr.veganoriented.domain.User;
+import kr.veganoriented.rest.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

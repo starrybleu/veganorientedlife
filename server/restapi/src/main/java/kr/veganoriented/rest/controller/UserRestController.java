@@ -1,7 +1,7 @@
 package kr.veganoriented.rest.controller;
 
-import kr.veganoriented.domain.User;
-import kr.veganoriented.service.UserService;
+import kr.veganoriented.rest.domain.User;
+import kr.veganoriented.rest.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

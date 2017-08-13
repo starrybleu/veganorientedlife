@@ -1,25 +1,17 @@
-package kr.veganoriented.service;
+package kr.veganoriented.rest.service;
 
-import kr.veganoriented.domain.ApiUser;
-import kr.veganoriented.domain.User;
-import kr.veganoriented.enums.Role;
-import kr.veganoriented.repository.UserRepository;
+import kr.veganoriented.rest.domain.ApiUser;
+import kr.veganoriented.rest.domain.User;
+import kr.veganoriented.rest.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Request;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -37,6 +29,8 @@ public class UserService implements UserDetailsService {
 
     private Logger LOG = LoggerFactory.getLogger(UserService.class);
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @Autowired
     private UserRepository userRepository;
 
 //    @Autowired
@@ -61,7 +55,7 @@ public class UserService implements UserDetailsService {
 //            createTokenForNewUser(user.getId(), user.getHashedPassword(), "foo");
             return userRepository.save(user);
         } else {
-            LOG.info("Duplicate user located, exception raised with appropriate HTTP response code.");
+            LOG.info("Duplicate email located.");
             return userRepository.save(user);
         }
     }
@@ -81,11 +75,6 @@ public class UserService implements UserDetailsService {
 
     public List<User> findAll() {
         return userRepository.findAll();
-    }
-
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
     }
 
     @Override

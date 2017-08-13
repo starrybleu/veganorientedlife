@@ -1,10 +1,9 @@
-package kr.veganoriented.domain;
+package kr.veganoriented.rest.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.security.Principal;
 
 import static org.springframework.util.Assert.notNull;
@@ -13,7 +12,6 @@ import static org.springframework.util.Assert.notNull;
  * Created by terrylee on 17. 8. 4.
  */
 
-@XmlRootElement
 @Data
 public class ApiUser implements Principal {
 

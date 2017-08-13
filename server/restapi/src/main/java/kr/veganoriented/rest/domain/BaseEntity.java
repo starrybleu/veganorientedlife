@@ -1,4 +1,4 @@
-package kr.veganoriented.domain;
+package kr.veganoriented.rest.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
