@@ -1,8 +1,11 @@
 package kr.veganoriented.configuration;
 
+import kr.veganoriented.client.details.MongoClientDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -37,6 +40,11 @@ public class OAuth2TokenConfiguration extends AuthorizationServerConfigurerAdapt
         defaultTokenServices.setSupportRefreshToken(true);
 
         return defaultTokenServices;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
