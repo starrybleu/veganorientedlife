@@ -13,6 +13,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 
 import static com.google.common.collect.Sets.filter;
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * Created by terrylee on 17. 8. 13.
@@ -51,7 +52,7 @@ public class MongoClientDetailsService implements ClientDetailsService, ClientRe
                         clientDetails.getResourceIds(),
                         clientDetails.getAuthorizedGrantTypes(),
                         clientDetails.getRegisteredRedirectUri(),
-                        new ArrayList(clientDetails.getAuthorities()),
+                        newArrayList(clientDetails.getAuthorities()),
                         clientDetails.getAccessTokenValiditySeconds(),
                         clientDetails.getRefreshTokenValiditySeconds(),
                         clientDetails.getAdditionalInformation(),
@@ -70,7 +71,7 @@ public class MongoClientDetailsService implements ClientDetailsService, ClientRe
                         clientDetails.getResourceIds(),
                         clientDetails.getAuthorizedGrantTypes(),
                         clientDetails.getRegisteredRedirectUri(),
-                        new ArrayList(clientDetails.getAuthorities()),
+                        newArrayList(clientDetails.getAuthorities()),
                         clientDetails.getAccessTokenValiditySeconds(),
                         clientDetails.getRefreshTokenValiditySeconds(),
                         clientDetails.getAdditionalInformation(),
@@ -122,7 +123,7 @@ public class MongoClientDetailsService implements ClientDetailsService, ClientRe
     private Predicate<String> byAutoApproveOfScope(final ClientDetails clientDetails) {
         return new Predicate<String>() {
             @Override
-            public boolean apply(String scope) {
+            public boolean apply(final String scope) {
                 return clientDetails.isAutoApprove(scope);
             }
         };
