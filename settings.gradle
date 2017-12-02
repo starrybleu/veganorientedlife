@@ -1,6 +1,6 @@
 //rootProject.name = 'veganorientedlife'
 
-['server'].each {
+['server', 'front'].each {
     def projectDir = new File(rootDir, it)
     print(rootDir)
     // 그룹 디렉토리가 없으면 생성
