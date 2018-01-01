@@ -22,10 +22,10 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/sign-up")
+    @GetMapping("/users/sign-up")
     public String signUp() {
         logger.info("회원가입 페이지");
-        return "sign-up";
+        return "users/sign-up";
     }
 
 }
