@@ -18,13 +18,13 @@ public class MainController {
 
     @RequestMapping("/")
     public String index() {
-        logger.info("인덱스 페이지");
+        logger.debug("index page");
         return "index";
     }
 
     @GetMapping("/users/sign-up")
     public String signUp() {
-        logger.info("회원가입 페이지");
+        logger.debug("sign-up page");
         return "users/sign-up";
     }
 

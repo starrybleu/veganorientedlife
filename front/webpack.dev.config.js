@@ -8,7 +8,10 @@ module.exports = {
         compress: true,
         host: '0.0.0.0',
         port: 3000,
-        contentBase: path.join(__dirname, './vegan/src/main/resources/templates/')
+        publicPath: '/js/',
+        proxy: {
+            '**': 'http://localhost:8082'
+        }
     },
     plugins: [
         new webpack.NamedModulesPlugin() //prints more readable module names in the browser console on HMR updates
